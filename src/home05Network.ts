@@ -34,8 +34,10 @@ function testHome05Network(
   for (let item of testData) {
     const result = network.run(item);
     console.log(
-      "Chance do time da casa fazer gol:",
-      result.resultado.toFixed(3)
+      Math.round(parseFloat(result.resultado.toFixed(3))) ===
+        item.expectedResult
+        ? "Acertou"
+        : "Errou"
     );
   }
 }

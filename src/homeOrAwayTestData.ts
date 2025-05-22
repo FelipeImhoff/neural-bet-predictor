@@ -13,22 +13,27 @@ function getTestData() {
     {
       mandante: 0.7273,
       visitante: 0.7474,
+      expectedResult: 1,
     },
     {
       mandante: 0.6,
       visitante: 0.6875,
+      expectedResult: 0,
     },
     {
       mandante: 0.5385,
       visitante: 0.76,
+      expectedResult: 1,
     },
     {
       mandante: 0.7778,
       visitante: 0.7,
+      expectedResult: 1,
     },
     {
       mandante: 0.8532,
       visitante: 0.95,
+      expectedResult: 0,
     },
   ];
 

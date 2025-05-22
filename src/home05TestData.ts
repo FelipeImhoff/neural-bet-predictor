@@ -19,30 +19,35 @@ function getTestData() {
       visitante: 0.6959,
       mediaGolsMandante: normalizeGoals(1.18),
       mediaGolsVisitante: normalizeGoals(1.16),
+      expectedResult: 1,
     },
     {
       mandante: 0.8,
       visitante: 0.5625,
       mediaGolsMandante: normalizeGoals(1.4),
       mediaGolsVisitante: normalizeGoals(0.88),
+      expectedResult: 0,
     },
     {
       mandante: 0.7692,
       visitante: 0.64,
       mediaGolsMandante: normalizeGoals(1.31),
       mediaGolsVisitante: normalizeGoals(1.12),
+      expectedResult: 0,
     },
     {
       mandante: 0.7778,
       visitante: 0.9,
       mediaGolsMandante: normalizeGoals(2.33),
       mediaGolsVisitante: normalizeGoals(2.3),
+      expectedResult: 1,
     },
     {
       mandante: 0.8991,
       visitante: 0.6,
       mediaGolsMandante: normalizeGoals(2.09),
       mediaGolsVisitante: normalizeGoals(1.05),
+      expectedResult: 1,
     },
   ];
 

@@ -34,8 +34,10 @@ function testHomeOrAwayNetwork(
   for (let item of testData) {
     const result = network.run(item);
     console.log(
-      "Chance de o jogo ter um vencedor:",
-      result.resultado.toFixed(3)
+      Math.round(parseFloat(result.resultado.toFixed(3))) ===
+        item.expectedResult
+        ? "Acertou"
+        : "Errou"
     );
   }
 }

@@ -26,7 +26,7 @@ function trainHomeOrAwayNetwork(
 function testHomeOrAwayNetwork(
   network: NeuralNetwork<InputType, OutputType>
 ): void {
-  const exemplo = {
+  const test = {
     mandante: 0.8824,
     visitante: 1,
     media: 0.9412,
@@ -34,7 +34,7 @@ function testHomeOrAwayNetwork(
     difAbs: -0.1176,
   };
 
-  const exemplo2 = {
+  const test2 = {
     mandante: 0.6,
     visitante: 0.6875,
     media: 0.64375,
@@ -42,10 +42,10 @@ function testHomeOrAwayNetwork(
     difAbs: -0.0875,
   };
 
-  const resultado = network.run(exemplo);
-  const resultado2 = network.run(exemplo2);
-  console.log("Chance da casa vencer:", resultado.resultado.toFixed(3));
-  console.log("Chance da casa vencer:", resultado2.resultado.toFixed(3));
+  const result = network.run(test);
+  const result2 = network.run(test2);
+  console.log("Chance da casa vencer:", result.resultado.toFixed(3));
+  console.log("Chance da casa vencer:", result2.resultado.toFixed(3));
 }
 
 export { trainHomeOrAwayNetwork, testHomeOrAwayNetwork };

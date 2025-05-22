@@ -1,13 +1,14 @@
 import { NeuralNetwork } from "brain.js";
-import { TreinoInput } from "./types";
+import { HomeOrAwayInputTraining } from "./types";
+import { getTestData } from "./homeOrAwayTestData";
 
-type InputType = TreinoInput["input"];
-type OutputType = TreinoInput["output"];
+type HomeOrAwayInputType = HomeOrAwayInputTraining["input"];
+type HomeOrAwayOutputType = HomeOrAwayInputTraining["output"];
 
 function trainHomeOrAwayNetwork(
-  dataset: TreinoInput[]
-): NeuralNetwork<InputType, OutputType> {
-  const net = new NeuralNetwork<InputType, OutputType>({
+  dataset: HomeOrAwayInputTraining[]
+): NeuralNetwork<HomeOrAwayInputType, HomeOrAwayOutputType> {
+  const net = new NeuralNetwork<HomeOrAwayInputType, HomeOrAwayOutputType>({
     hiddenLayers: [16, 8],
     activation: "sigmoid",
   });
@@ -15,7 +16,7 @@ function trainHomeOrAwayNetwork(
   net.train(dataset, {
     iterations: 500000,
     errorThresh: 0.005,
-    //log: true,
+    log: true,
     logPeriod: 500,
     learningRate: 0.05,
   });
@@ -24,28 +25,19 @@ function trainHomeOrAwayNetwork(
 }
 
 function testHomeOrAwayNetwork(
-  network: NeuralNetwork<InputType, OutputType>
+  network: NeuralNetwork<HomeOrAwayInputType, HomeOrAwayOutputType>
 ): void {
-  const test = {
-    mandante: 0.8824,
-    visitante: 1,
-    media: 0.9412,
-    dif: 0.1176,
-    difAbs: -0.1176,
-  };
+  console.log("Casa/Fora");
 
-  const test2 = {
-    mandante: 0.6,
-    visitante: 0.6875,
-    media: 0.64375,
-    dif: 0.0875,
-    difAbs: -0.0875,
-  };
+  const testData = getTestData();
 
-  const result = network.run(test);
-  const result2 = network.run(test2);
-  console.log("Chance da casa vencer:", result.resultado.toFixed(3));
-  console.log("Chance da casa vencer:", result2.resultado.toFixed(3));
+  for (let item of testData) {
+    const result = network.run(item);
+    console.log(
+      "Chance de o jogo ter um vencedor:",
+      result.resultado.toFixed(3)
+    );
+  }
 }
 
 export { trainHomeOrAwayNetwork, testHomeOrAwayNetwork };
